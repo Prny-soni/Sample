@@ -1,0 +1,39 @@
+<template>
+    <lightning-card  title="LWC" >
+
+        <div class="slds-p-horizontal--small">
+    <lightning-combobox
+            name="progress"
+            label="Status"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+        
+
+        <p>Selected value is: {value}</p>
+
+        <lightning-dual-listbox name="languages"
+        label="Select"
+        source-label="Available"
+        selected-label="Selected"
+        field-level-help="Select your preferred languages"
+        value={selectedValues}
+        options={fieldOptions}
+        onchange={handleSelect}></lightning-dual-listbox>
+
+        <lightning-textarea name="input1" label="Query" value={queryString}></lightning-textarea>
+        <lightning-button variant="brand" label="Get Query" title="Primary action" onclick={handleClick}></lightning-button>
+
+        <template if:true={queryData}>
+            <lightning-datatable
+                key-field="Id"
+                data={queryData}
+                columns={columns}>
+           </lightning-datatable>
+        </template>
+
+    </div>
+</lightning-card>
+
+</template>
